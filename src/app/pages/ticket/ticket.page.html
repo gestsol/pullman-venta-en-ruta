@@ -12,10 +12,10 @@
     </div>
 
     <div style="display: inline; width: 10%;" >
-      <ion-icon name="md-cart" style="font-size: 25px;padding-top: 5px;"></ion-icon>
+      <!-- <ion-icon name="md-cart" style="font-size: 25px;padding-top: 5px;"></ion-icon>
       <ion-badge color="dark" mode="ios" *ngIf="comprasDetalles && comprasDetalles.length>0"
         style="position: absolute; left: 81%; top: 2px; font-size: 0.7rem;opacity: 0.7; background-color: #0247ac;">
-        {{comprasDetalles.length}}</ion-badge>
+        {{comprasDetalles.length}}</ion-badge> -->
     </div>
 
     <div style="display: inline; width: 10%" >
@@ -324,7 +324,7 @@
       </div>
     </ion-button>
 
-    <div class="divSelectMenu">
+    <div class="divSelectMenu" *ngIf="false">
       <ion-select multiple="false" placeholder="&#8597; Ordenar" class="selectMenu"
         [interfaceOptions]="orderWindowsDetail" (ionChange)="orderCambio()" [(ngModel)]="orderSelected"
         (ionFocus)="orderShowActive = true" (ionCancel)="orderShowActive = false">
@@ -342,7 +342,7 @@
       </ion-select>
     </div>
 
-    <div class="divSelectMenu">
+    <div class="divSelectMenu" *ngIf="false">
       <ion-select multiple="false" placeholder="&#8597; Filtrar" class="selectMenu"
         [interfaceOptions]="filterWindowsDetail" (ionChange)="orderCambio()" [(ngModel)]="filterSelected"
         (ionFocus)="filterShowActive = true" (ionCancel)="filterShowActive = false">

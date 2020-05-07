@@ -1,28 +1,34 @@
 <ion-header no-border>
 
   <div class="cabeceraGeneral">
-    <img src="../../assets/images/PulmanLogo.png" 
-      style="padding: 1vh; position: relative; z-index: 100; height: 100%; object-fit:scale-down;padding-top: 8vh; margin: 30%; ">
+    <img src="../../assets/images/PulmanLogo.png" style="padding: 1vh; position:
+      relative; z-index: 100; height: 100%;
+      object-fit:scale-down;padding-top: 8vh; margin: 30%;">
   </div>
 
 </ion-header>
 
 
 
-<ion-content>
- 
-  <div style="height: 100%; width: 100%;background-color: #fe5b00;padding: 0px 3vw  3vw  3vw">
-    <div style=" height: 100%; background-color: white ;margin: 0px 0px 0px 0px;">
+<ion-content style="
+border-left: 1rem solid var(--ion-color-primary);
+border-right: 1rem solid var(--ion-color-primary);
+border-bottom: 1rem solid var(--ion-color-primary);
+">
+
+  <div style="width: 100%;padding: 0px 3vw 3vw 3vw">
+    <div style="background-color: white ;margin: 0px 0px 0px
+      0px;">
 
       <div style="width: 100%; text-align: right;padding: 2vh;">
         <ion-text color="primary" style="font-size: 1.2rem;">
-          Caratula: 123345
+          Caratula: {{mys.nCaratula}}
         </ion-text>
       </div>
 
 
 
-      <ion-grid style="height: 100% ;margin-top: -10vh;">
+      <ion-grid style="height: 100% ;">
         <ion-row class="ion-justify-content-center ion-align-items-center" style="height: 100%">
           <ion-col size="12" style="text-align: center;">
 
@@ -30,23 +36,38 @@
 
               <ion-row style="position: relative;" (click)="volver()">
                 <ion-col size="12" style="padding-top: 2vh;">
-                  <div
-                    style="background-color: #ff45008f; color:white; border-radius: 1vw; width: 30vw; height: 7vh; display: flex; justify-content: center; align-items: center; font-size: 1rem;">
-                    Cerrar sesión</div>
+                  <div style="display: flex;flex-direction: row; align-items:
+                    center;">
+                    <ion-icon name="cash" style="color:
+                      var(--ion-color-primary);zoom: 2;margin-right: 0.2rem;">
+                    </ion-icon>
+                    <div>Tarifa</div>
+                  </div>
                 </ion-col>
               </ion-row>
- 
 
               <ion-row class="ion-no-margin ion-no-padding">
-                <ion-col size=6 class="ion-no-margin ion-no-padding">
-                  <ion-button (click)="btn1()" size="full"
-                    style="--background:lightgreen">
-                    $1.000
+                <ion-col size=6 class="ion-no-margin ion-no-padding" *ngFor="let
+                  btn of btnValores">
+                  <ion-button (click)="btnGral(btn)">
+                    <div>
+                      ${{btn.toLocaleString('de-DE')}}
+                    </div>
                   </ion-button>
                 </ion-col>
+              </ion-row>
+
+              <!-- <ion-row class="ion-no-margin ion-no-padding">
                 <ion-col size=6 class="ion-no-margin ion-no-padding">
-                  <ion-button (click)="btn2()" size="full"
-                    style="--background: lightsteelblue">
+                  <ion-button (click)="btn1()">
+                    $1.000
+                    {{1000 | currency:'USD':'symbol':'3.0-0':'fr'}}
+                  </ion-button>
+                </ion-col>
+
+
+                <ion-col size=6 class="ion-no-margin ion-no-padding">
+                  <ion-button (click)="btn2()">
                     $2.000
                   </ion-button>
                 </ion-col>
@@ -54,15 +75,56 @@
 
               <ion-row class="ion-no-margin ion-no-padding">
                 <ion-col size=6 class="ion-no-margin ion-no-padding">
-                  <ion-button (click)="btn5()" size="full"
-                    style="--background:lightcoral;">
+                  <ion-button (click)="btn5()">
                     $5.000
                   </ion-button>
                 </ion-col>
                 <ion-col size=6 class="ion-no-margin ion-no-padding">
-                  <ion-button (click)="btn10()" size="full"
-                    style="--background:lightslategrey">
+                  <ion-button (click)="btn10()">
                     $10.000
+                  </ion-button>
+                </ion-col>
+              </ion-row> -->
+              <ion-row>
+                <ion-col class="ion-no-margin ion-no-padding" size="12" style="text-align: center;font-size: 2rem;">
+                  Total</ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="12" style="display: flex; justify-content:
+                  center;">
+
+                  <div style="height: 2rem; width: 60%;border-radius: 1rem;
+                    font-size: 1.5rem; text-align: center;
+                    border: 1px solid var(--ion-color-primary);">
+                    <div *ngIf="totalGeneral>0">
+                      ${{totalGeneral.toLocaleString('de-DE')}}
+                    </div>
+
+                  </div>
+
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col size="12">
+                  <ion-button color="light" style="height: 3rem;
+                    font-size: 1rem;
+                    width: 60%;
+                    --border-width: 1px;
+                    margin: 0; text-transform: none;" (click)="btnLimpiar()">
+                    Limpiar
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col size="12">
+                  <ion-button color="secondary" style="height: 3rem;
+                    font-size: 1rem;
+                    width: 90%;
+                    --border-width: 1px;
+                    margin: 0; text-transform: none;" (click)="Imprimir2()">
+                    Imprimir
                   </ion-button>
                 </ion-col>
               </ion-row>
@@ -70,11 +132,9 @@
 
 
 
-
-
-              <ion-button size="full" style="margin-top: 4vh; height: 7vh;font-size: 4vh;" (click)="ImprimirAcumulado()">
+              <!-- <ion-button style="margin-top: 4vh; height: 7vh;font-size: 4vh;" (click)="ImprimirAcumulado()">
                 Cerrar servicio
-              </ion-button>
+              </ion-button> -->
             </div>
 
 
