@@ -8,12 +8,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./tipo-de-venta.page.scss'],
 })
 export class TipoDeVentaPage implements OnInit {
-  constructor(private mys: MyserviceService, private router: Router) {}
+  constructor(private mys: MyserviceService, private router: Router) { }
 
-  ngOnInit() {}
-
-  btnVentaRural() {
-    this.mys.tipoDeVenta = 'rural';
-    this.router.navigateByUrl('/caratula');
+  ngOnInit() {
+    console.log('this.mys.ventaRuta', this.mys.ventaRuta);
   }
+
+  btnGeneral(eleccion) {
+    console.log('eleccion', eleccion);
+    switch (eleccion) {
+      case 'aduana':
+        this.mys.ventaRuta['tipoVenta'] = 'aduana';
+        this.router.navigateByUrl('/caratula');
+        break;
+
+      case 'tierra':
+        this.mys.ventaRuta['tipoVenta'] = 'tierra';
+        this.router.navigateByUrl('/caratula');
+        break;
+
+
+      case 'terminal':
+        this.mys.ventaRuta['tipoVenta'] = 'terminal';
+        this.router.navigateByUrl('/caratula');
+        break;
+
+      case 'rural':
+        this.mys.ventaRuta['tipoVenta'] = 'rural';
+        this.router.navigateByUrl('/caratula');
+        break;
+
+      default:
+        break;
+    }
+  }
+
+
+  // btnVentaRural() {
+  //   this.mys.tipoDeVenta = 'rural';
+  //   this.router.navigateByUrl('/caratula');
+  // }
 }

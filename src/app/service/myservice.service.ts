@@ -23,10 +23,15 @@ export class MyserviceService {
   total = 0;
   temporalComprasCarrito;
 
-  tipoDeVenta = '';
-  nCaratula = '';
+  // tipoDeVenta = '';
+  // nCaratula = '';
 
   // pageMyDataAsRegister = true
+  /////////////////////////////////////////////////
+  // ventaRuta {tipoVenta:'rural',rut:'165161-k,caratula:'747474743}
+  ventaRuta = { tipoVenta: '', rut: '', caratula: '' };
+  // ventaRuta = { tipoVenta: 'rural', rut: '10978437-0', caratula: '0120C013824' }
+  /////////////////////////////////////////////////
 
   constructor(
     public alertController: AlertController,
@@ -34,7 +39,7 @@ export class MyserviceService {
     public router: Router,
     private nativeStorage: NativeStorage,
     public platform: Platform
-  ) {}
+  ) { }
 
   /**
    * Obtiene todos los post que existen en la api
@@ -213,7 +218,7 @@ export class MyserviceService {
         {
           text: 'Ok',
           role: 'ok',
-          handler: () => {},
+          handler: () => { },
         },
       ],
     });

@@ -6,32 +6,26 @@
       <ion-col size="12">
 
 
-
-
         <ion-text style="color: white;    font-size: 1.2rem;">
           Selecciona el tipo <br />
           de venta
         </ion-text>
 
-        <ion-button expand="block" color="secondary" shape="round" routerLink='/login'>
+        <ion-button expand="block" color="secondary" shape="round" (click)="btnGeneral('aduana')">
           Venta aduana
         </ion-button>
 
-        <ion-button expand="block" color="secondary" shape="round" routerLink='/login'>
+        <ion-button expand="block" color="secondary" shape="round" (click)="btnGeneral('tierra')">
           Asistente de tierra
         </ion-button>
 
-        <ion-button expand="block" color="secondary" shape="round" routerLink='/login'>
+        <ion-button expand="block" color="secondary" shape="round" (click)="btnGeneral('terminal')">
           Venta terminal
         </ion-button>
 
-        <ion-button expand="block" color="secondary" shape="round" (click)="btnVentaRural()">
+        <ion-button expand="block" color="secondary" shape="round" (click)="btnGeneral('rural')">
           Venta rural
         </ion-button>
-
-
-
-
 
 
       </ion-col>

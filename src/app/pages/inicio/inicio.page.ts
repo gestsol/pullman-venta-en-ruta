@@ -8,18 +8,38 @@ import { Router } from '@angular/router';
   styleUrls: ['./inicio.page.scss'],
 })
 export class InicioPage implements OnInit {
-  constructor(private mys: MyserviceService, private router: Router) {}
+  constructor(public mys: MyserviceService, private router: Router) { }
 
   ngOnInit() {
-    console.log('tipoDeVenta', this.mys.tipoDeVenta);
+    console.log('this.mys.ventaRuta', this.mys.ventaRuta);
   }
 
   btnVenderBoleto() {
-    let destino = this.mys.tipoDeVenta;
-    console.log('destino', destino);
 
-    if (destino === 'rural') {
-      this.router.navigateByUrl('/pagina2');
+
+    switch (this.mys.ventaRuta.tipoVenta) {
+
+      case 'aduana':
+        this.router.navigateByUrl('/buy-your-ticket');
+        break;
+
+      case 'tierra':
+        this.router.navigateByUrl('/buy-your-ticket');
+        break;
+
+      case 'terminal':
+        this.router.navigateByUrl('/buy-your-ticket');
+        break;
+
+      case 'rural':
+        this.router.navigateByUrl('/pagina2');
+        break;
+
+      default:
+        break;
     }
+
+
+
   }
 }

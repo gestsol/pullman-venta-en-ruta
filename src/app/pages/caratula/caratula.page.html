@@ -3,18 +3,26 @@
     <ion-row style="height: 100%;" class="ion-justify-content-center ion-align-items-center">
       <ion-col size="12"
         style="display: flex; flex-direction: column; justify-content: center; align-items: center; padding:0 10vw">
+
+        <div *ngIf="loading" style="    margin-bottom: 1rem;">
+          <ion-spinner color="light" name="lines" style="zoom: 2;"></ion-spinner>
+        </div>
+
         <img src="../../assets/images/PulmanLogo.png" />
 
         <ion-text> ¡Bienvenido! </ion-text>
 
 
         <ion-input type="text" placeholder="Carátula" [(ngModel)]='nCaratula'></ion-input>
+        <ion-input type="text" placeholder="RUT" [(ngModel)]='rut'></ion-input>
 
 
 
         <ion-button expand="block" color="secondary" shape="round" (click)="btnIniciarSesion()">
           Iniciar sesión
         </ion-button>
+
+
       </ion-col>
     </ion-row>
   </ion-grid>

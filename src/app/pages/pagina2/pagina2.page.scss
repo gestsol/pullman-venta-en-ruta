@@ -116,7 +116,7 @@ ion-checkbox {
 }
 
 ion-button {
-  height: 14vh;
+  height: 4rem;
   font-size: 1.5rem;
   width: 100%;
   padding: 0.3rem;
@@ -133,17 +133,17 @@ ion-button {
   --border-color: var(--ion-color-secondary);
   --border-radius: 8px;
   --border-style: solid;
-  --border-width: 8px;
+  // --border-width: 8px;
   // --box-shadow: 10px 10px;
   --color: #ffffff;
   --color-activated: #ffffff;
   --color-focused: #ffffff;
   --color-hover: #ffffff;
   --opacity: 1;
-  --padding-bottom: 4px;
-  --padding-end: 4px;
-  --padding-start: 4px;
-  --padding-top: 4px;
+  --padding-bottom: 0;
+  --padding-end: 0;
+  --padding-start: 0;
+  --padding-top: 0;
   --ripple-color: #1e1e1e;
   --transition: background-color 15ms linear;
 }
