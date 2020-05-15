@@ -22,17 +22,12 @@ export class AppComponent {
     this.platform.ready().then(() => {
       // this.statusBar.styleDefault();
       this.statusBar.styleLightContent();
-      // this.statusBar.c
-
 
       // let status bar overlay webview
       this.statusBar.overlaysWebView(true);
 
       // set status bar to white
-      // this.statusBar.backgroundColorByHexString('#ffffff');
       this.statusBar.backgroundColorByHexString('#fe5b00');
-
-
 
       // this.splashScreen.hide();
     });

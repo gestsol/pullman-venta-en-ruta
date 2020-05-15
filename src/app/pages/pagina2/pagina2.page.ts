@@ -50,14 +50,30 @@ export class Pagina2Page implements OnInit {
 
     this.integrador.VRgetCaratula({ rut: this.ventaRuta.rut, caratula: this.ventaRuta.caratula }
     ).subscribe((resp: any) => {
+      console.log('respGetCaratula', resp);
 
-      if (resp.servicio.idServicio) {
+      if (resp && resp.servicio && resp.servicio.idServicio) {
         this.idServicio = resp.servicio.idServicio;
+        // alert('idServicio: ' + this.idServicio)
         this.integrador.VRgetTarifa({ idServicio: this.idServicio }).subscribe(resp2 => {
-          this.btnValores = resp2.map(x => parseInt(x.valor));
+          console.log('respGetTarifa', resp2);
+
+          if (resp2 && resp2.length > 0) {
+            this.btnValores = resp2.map(x => parseInt(x.valor));
+            // alert('btn0: ' + this.btnValores[0])
+
+          } else {
+            alert('No tenemos tarifas diponibles..')
+            this.router.navigateByUrl('/caratula');
+
+          }
+
           this.loading = false;
+
         });
+
       } else {
+        this.loading = false;
         alert('Servicio no encontrado..');
         this.router.navigateByUrl('/caratula');
 
@@ -68,24 +84,9 @@ export class Pagina2Page implements OnInit {
     });
 
 
-    // this.mys.acumulado =[];
   }
 
-  // btn1() {
-  //   this.btnGral(1);
-  // }
 
-  // btn2() {
-  //   this.btnGral(2);
-  // }
-
-  // btn5() {
-  //   this.btnGral(5);
-  // }
-
-  // btn10() {
-  //   this.btnGral(10);
-  // }
 
   volver() {
     this.router.navigateByUrl('/home');
@@ -147,7 +148,6 @@ export class Pagina2Page implements OnInit {
     let horaActual = moment().format('HH:mm:ss');
     if (this.totalGeneral !== 0) {
 
-      // console.log('this.ImprimirAcumuladoDsdIII2', this.mys.acumulado);
       this.myoptions = {
         name: 'pullman_001',
       };
@@ -222,16 +222,11 @@ export class Pagina2Page implements OnInit {
   }
 
   btnGral(myvalue: number) {
-    // this.totalGeneral = this.totalGeneral + myvalue;
     this.totalGeneral = myvalue;
     this.Imprimir2();
-    // console.log('',);
-
-    // this.totalGeneral = `$${myvalue}.000`;
-    // let myItem = { total: myvalue, totalMostrar: `$ ${myvalue}.000`, fecha: new Date().toLocaleString(), fecha2: new Date() }
-    // this.mys.acumulado.push(myItem);
-    // this.Imprimir2(myItem);
   }
+
+
 
   btnLimpiar() {
     this.totalGeneral = 0;

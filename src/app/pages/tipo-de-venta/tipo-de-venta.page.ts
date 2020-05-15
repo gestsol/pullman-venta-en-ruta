@@ -43,9 +43,4 @@ export class TipoDeVentaPage implements OnInit {
     }
   }
 
-
-  // btnVentaRural() {
-  //   this.mys.tipoDeVenta = 'rural';
-  //   this.router.navigateByUrl('/caratula');
-  // }
 }

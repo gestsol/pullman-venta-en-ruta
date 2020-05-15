@@ -166,22 +166,6 @@ export class TicketPage implements OnInit {
 
   }
 
-  // getBusFromService() {
-  //   // this.loadingBus = true;
-  //   this.allServices.forEach(element => {
-  //     this.httpClient.get<any>('assets/json/planillaVertical').subscribe(myBus => {
-  //       element['bus'] = this.sumar20piso2(myBus);
-  //       element['my_comprasByService'] = [];
-  //       element['my_comprasByServiceData'] = [];
-  //       // this.loadingBus = false;
-
-  //     });
-  //   });
-
-  // }
-
-
-
   myServiceSelection(nServiceSeleccion: number) {
     // setTimeout(() => {
     let estadoPrevio = this.allServices[nServiceSeleccion]['checked'];
@@ -204,32 +188,21 @@ export class TicketPage implements OnInit {
 
       setTimeout(() => {
         this.integradorService.getPlanillaVertical(servicio).subscribe(myBusFromApi => {
-          // agrego bus y sumo 20 a cada asiento de piso 2
-
-          // setTimeout(() => {
           let estadoPrevio = this.allServices[nServiceSeleccion]['checked'];
           this.allServices.forEach(element => {
             element['checked'] = false;
           });
           this.allServices[nServiceSeleccion]['checked'] = estadoPrevio;
-          // });
 
           this.allServices[nServiceSeleccion]['my_Bus'] = this.sumar20piso2(myBusFromApi);
-          // this.allServices[nServiceSeleccion]['my_comprasByService'] = [];
-          // this.allServices[nServiceSeleccion]['my_comprasByServiceData'] = [];
 
           this.allServices[nServiceSeleccion].checked = true;
           this.comprasByService = this.allServices[nServiceSeleccion]['my_comprasByService'];
-          // this.comprasByServiceData = this.allServices[nServiceSeleccion]['my_comprasByServiceData'];
           this.serviceSelectedNumber = nServiceSeleccion;
           this.serviceSelected = this.allServices[nServiceSeleccion];
 
           this.bus = this.allServices[this.serviceSelectedNumber].my_Bus;
 
-
-
-          // this.compras = [];
-          // verificar si se ha comprado en este servicio
           let nowIdService = this.allServices[nServiceSeleccion]['idServicio']
 
           this.comprasDetalles.forEach(element => {
@@ -237,11 +210,6 @@ export class TicketPage implements OnInit {
               this.bus = element.bus
             }
           });
-          // if (this.ticket.goTotal) {
-          //   this.tarifaTotal = this.ticket.goTotal;
-          // } else {
-          //   this.tarifaTotal = 0;
-          // }
 
           // preparando tarifas
           this.allServices[nServiceSeleccion].tarifaPrimerPisoInternet ? this.tarifaPiso1 = parseInt(this.allServices[nServiceSeleccion].tarifaPrimerPisoInternet.replace('.', '')) : this.tarifaPiso1 = null;
@@ -258,10 +226,6 @@ export class TicketPage implements OnInit {
           });
 
           this.loadingBus = false;
-          // this.allServices.forEach(element => {
-          //   element['checked'] = false;
-          // });
-          // this.allServices[nServiceSeleccion]['checked'] = estadoPrevio;
 
         });
 
@@ -272,10 +236,6 @@ export class TicketPage implements OnInit {
     } else {
       this.allServices[this.serviceSelectedNumber]['checked'] = !this.allServices[this.serviceSelectedNumber]['checked'];
       this.loadingBus = false;
-      // this.allServices.forEach(element => {
-      //   element['checked'] = false;
-      // });
-      // this.allServices[nServiceSeleccion]['checked'] = estadoPrevio;
 
     }
 
@@ -284,7 +244,7 @@ export class TicketPage implements OnInit {
 
   presionadoAsiento(piso: string, y: number, x: number) {
 
-    this.comprasByService? null:this.comprasByService = []
+    this.comprasByService ? null : this.comprasByService = []
 
     if (this.compras.length >= 4 && this.way === 'go' && this.bus[piso][y][x]['estado'] === 'libre') {
       this.allServices.forEach(element => {
@@ -348,14 +308,6 @@ export class TicketPage implements OnInit {
       // guardo en this.allServices
       this.allServices[this.serviceSelectedNumber].my_Bus = this.bus;
       this.allServices[this.serviceSelectedNumber].my_comprasByService = this.comprasByService;
-      // this.allServices[this.serviceSelectedNumber].my_comprasByServiceData = this.comprasByServiceData;
-
-      // // calculo la tarifa total
-      // let total_general = 0;
-      // this.comprasDetalles.forEach(element => {
-      //   total_general = total_general + element.valor;
-      // });
-      // this.tarifaTotal = total_general;
 
     } // fin de numeros asientos permitidos
   } // fin presionado
@@ -372,9 +324,6 @@ export class TicketPage implements OnInit {
     // caso asiento ya seleccionado
     this.bus[piso][y][x]['estado'] = 'libre';
 
-    // creo el texto a eliminar de la compra
-    // let texto = `piso_${piso}/fila_${x}/columna_${y}/asiento_${this.bus[piso][y][x]['asiento']}/precio_${tarifa}`;
-    // let texto = this.way + '_' + this.serviceSelected.idServicio + '_' + this.bus[piso][y][x]['asiento'];
 
     // variables totales
     let index = this.compras.indexOf(texto);
@@ -411,15 +360,11 @@ export class TicketPage implements OnInit {
     this.bus[piso][y][x]['estado'] = 'seleccionado';
     if (piso === '1') {
       // sumando para piso1
-      // this.tarifaTotal = this.tarifaTotal + this.tarifaPiso1;
       tarifa = this.tarifaPiso1;
     } else {
       // sumando para piso2
-      // this.tarifaTotal = this.tarifaTotal + this.tarifaPiso2;
       tarifa = this.tarifaPiso2;
     }
-    // this.compras.push(`piso_${piso}/fila_${x}/columna_${y}/asiento_${this.bus[piso][y][x]['asiento']}/precio_${tarifa}`);
-    // this.allServices[this.serviceSelectedNumber]['my_Total'] = this.tarifaTotal;
     let texto = this.way + '_' + this.serviceSelected.idServicio + '_' + this.bus[piso][y][x]['asiento']
     this.compras.push(texto);
     this.comprasByService.push(texto);
@@ -533,12 +478,6 @@ export class TicketPage implements OnInit {
       this.router.navigateByUrl('/buy-your-ticket');
     }
   }
-
-  // orderCancel() { this.orderShowActive = false }
-  // filterCancel() { this.filterShowActive = false }
-
-
-
 
   orderCambio() {
     switch (this.orderSelected) {

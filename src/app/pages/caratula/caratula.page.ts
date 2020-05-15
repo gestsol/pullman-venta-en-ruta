@@ -18,7 +18,13 @@ export class CaratulaPage implements OnInit {
   nCaratula = '';
   rut = '';
   loading = false;
-  ngOnInit() { }
+  ngOnInit() {
+    // this.integrador.VRgetCaratula({ caratula: '0118C870143', rut: '11354757-K' }).subscribe(x => alert('caratula SIN BLOQUEOS ' + x));
+    // this.integrador.VRvalidaUsuario({ caratula: '0120C013623', rut: '11354757-K' }).subscribe(x => alert('ValidaUsuario SIN BLOQUEOS ' + x));
+    // this.integrador.VRgetTarifa({ idServicio: 'BU888' }).subscribe(x => alert('GetTarifa SIN BLOQUEOS ' + x));
+    // this.integrador.VRcierre({ caratula: '0120C013623' }).subscribe(x => alert('Cierre SIN BLOQUEOS ' + x));
+    // this.integrador.VRtransaccion({ caratula: '0120C013623', tarifa: "5000", latitud: "1234567,123", longitud: "987654321,12", idServicio: "VE", usuario: "14485557-4" }).subscribe(x => alert('Transacción SIN BLOQUEOS ' + x));
+  }
 
   btnIniciarSesion() {
 
@@ -30,7 +36,8 @@ export class CaratulaPage implements OnInit {
       // caso todo validado
       this.loading = true
       this.integrador.VRvalidaUsuario({ caratula: this.nCaratula, rut: this.rut }).subscribe((resp: any) => {
-        if (resp.codigo === '01') {
+        console.log('resp', resp);
+        if (resp && resp.codigo && resp.codigo === '01') {
           this.mys.ventaRuta.rut = this.rut;
           this.mys.ventaRuta.caratula = this.nCaratula;
           this.loading = false;

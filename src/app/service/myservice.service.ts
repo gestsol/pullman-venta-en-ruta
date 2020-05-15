@@ -49,7 +49,6 @@ export class MyserviceService {
       let plt = this.platform.platforms();
 
       if (plt.includes('mobileweb') || plt.includes('desktop')) {
-        // //console.log('tiene mobilweb');
 
         if (localStorage.getItem('usuario')) {
           observer.next(true);
@@ -59,7 +58,6 @@ export class MyserviceService {
           observer.complete();
         }
       } else {
-        //console.log('No tiene mobilweb');
 
         this.nativeStorage.getItem('usuario').then(
           (data) => {
@@ -187,7 +185,6 @@ export class MyserviceService {
         this.nativeStorage.setItem('usuario', datosUsuario).then(
           (data) => {
             // Verificando que si se guard{o}
-            //console.log('Stored first item!', data)
 
             this.nativeStorage.getItem('usuario').then(
               (data) => {

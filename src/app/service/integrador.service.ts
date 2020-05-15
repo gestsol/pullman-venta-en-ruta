@@ -10,7 +10,8 @@ export class IntegradorService {
     sinProxy = true
     // sinProxy = false;
     urlBase = 'https://pullmanapi.pasajeschile.cl'
-    urlBase2 = 'http://qa.pullman.cl'
+    // urlBase2 = 'http://qa.pullman.cl'
+    urlBase2 = 'https://pullmanapi.pasajeschile.cl'
     // urlBase = 'http://clamber.pullman.cl'    
 
     // sinProxy= false 
@@ -251,7 +252,7 @@ export class IntegradorService {
         // let dirProxy = '/rest/usuario/validaUsuarioCaratula';
         let dirProxy = '/srv-venta-electronica-web/rest/usuario/validaUsuarioCaratula';
         this.sinProxy ? urlFinal = this.urlBase2 + dirProxy : urlFinal = dirProxy;
-        console.log('urlFinal-------->', urlFinal);
+        // console.log('urlFinal-------->', urlFinal);
         // alert(urlFinal)
         return this.http.post<any[]>(urlFinal, params);
     }
