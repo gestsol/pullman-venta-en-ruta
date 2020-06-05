@@ -29,7 +29,7 @@ export class MyserviceService {
   // pageMyDataAsRegister = true
   /////////////////////////////////////////////////
   // ventaRuta {tipoVenta:'rural',rut:'165161-k,caratula:'747474743}
-  ventaRuta = { tipoVenta: '', rut: '', caratula: '' };
+  ventaRuta = { tipoVenta: '', rut: '', caratula: '', boleto: '', idServicio: '', totalGeneral: 0, fecha: '', hora: '' };
   // ventaRuta = { tipoVenta: 'rural', rut: '10978437-0', caratula: '0120C013824' }
   /////////////////////////////////////////////////
 
